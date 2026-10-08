@@ -1,14 +1,109 @@
-<script>
-    let form ={
-        name:"Kaviharan",
-        age:"",
-        email:"Kav@11.com",
-        phone:""
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
     }
-    for (key in form){
-        if(form[key]===""){
-            console.log(`${key} is missing , please fill..`);
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+</style>
+
+<body>
+
+    <div>
+        <form id="myform" action="">
+            <label for="">Username</label>
+            <input type="text" id="name">
+
+            <label for="">Password</label>
+            <input type="password" id="password">
+
+
+            <label for="">Email</label>
+            <input type="email" id="email">
+
+
+            <label for="">Phone</label>
+            <input type="tel" id="phone">
+
+
+            <button type="submit">Submit</button>
+
+        </form>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        let form1 = document.getElementById("myform");
+
+        form1.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            let username = document.getElementById("name").value;
+            let password = document.getElementById("password").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            
+            let missing = "";
+
+            if (username === "") {
+                missing += "Username is missing <br>";
+            }
+
+            if (password === "") {
+                missing += "Password is missing <br>";
+            }
+
+            if (email === "") {
+                missing += "Email is missing <br>";
+            }
+
+            if (phone === "") {
+                missing += "Phone is missing <br>";
+            }
+
+            if (missing === "") {
+                document.getElementById("result").innerHTML =
+                    "All required fields are filled!";
+            }
+            else {
+                document.getElementById("result").innerHTML = missing;
+            }
+
+
+
+        })
+    </script>
+
+
+    <script>
+        let form = {
+            name: "Kaviharan",
+            age: "",
+            email: "Kav@11.com",
+            phone: ""
         }
-       
-    }
-</script>
+        for (key in form) {
+            if (form[key] === "") {
+                console.log(`${key} is missing , please fill..`);
+            }
+
+        }
+    </script>
+</body>
+
+</html>
