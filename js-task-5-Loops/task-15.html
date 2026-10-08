@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Task 15: Server Health Monitoring Monitor server status continuously until offline.</p>
+
+    <script>
+        let status = ""
+
+        while (status !== "off") {
+            status = prompt("Enter Status (on/off)")
+
+            if(status ==="on"){
+                console.log("Monitor is Online");
+            }
+            else if(status ==="off"){
+                console.log("Monitor is offline");
+            }
+            else{
+                console.log("Try Again");
+                
+            }
+        }
+    </script>
+</body>
+
+</html>

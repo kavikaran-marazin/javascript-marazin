@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Task 17: Exam Result Processing Calculate pass/fail counts and highest/lowest marks.</p>
+
+    <script>
+        let status = "";
+        let marks = [];
+        let passcount = 0;
+        let failcount = 0
+
+        while (status !== "stop") {
+            status = prompt("Enter the status");
+
+            if (status == "add") {
+                let mark = Number(prompt("Enter the marks"));
+
+                marks.push(mark)
+
+
+
+                if (mark >= 40) {
+                    console.log("pass");
+                    passcount += 1
+
+                }
+                else {
+                    console.log("Fail");
+                    failcount += 1;
+                }
+            }
+
+            else if (status == "stop") {
+                break;
+            }
+            
+            else{
+                console.log("Invalid status");
+                
+            }
+        }
+        let highest = Math.max(...marks);
+        let lowest = Math.min(...marks);
+
+        console.log("All Marks: " + marks);
+        console.log("Total passcount; " + passcount);
+        console.log("Total failcount; " + failcount);
+        console.log(`Highest Marks ${highest}`);
+        console.log(`lowest Marks ${lowest}`);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Task 16: E-Commerce Discount Calculator Calculate subtotals, discounts, and grand total.</p>
+
+    <script>
+        let discount = 0;
+        let grandTotal = 0;
+        let quantity = 0
+        let price;
+        let addProduct = ""
+        let subtotal = 0
+        let quantityprice
+
+        while (addProduct !== "stop") {
+            addProduct = prompt("Enter Product Add or Stop")
+
+            if (addProduct == "add") {
+
+                quantity = Number(prompt("Enter the Quanity"))
+                price = Number(prompt("Enter the price"));
+
+
+                quantityprice = quantity * price;
+                subtotal += quantityprice;
+
+                console.log(`Total Quantity: ${quantity}`);
+                console.log(`Total Price: ${price}`);
+                console.log(`Product Total: ${quantityprice}`);
+                console.log(`Current Subtotal: ${subtotal}`);
+                
+                
+            }
+            else if (addProduct == "stop") {
+               
+                if(subtotal>=5000){
+                    discount = 0.1
+                }
+                else{
+                    discount = 0
+                }
+            }
+            else{
+                console.log("Invalid Input");
+                
+            }
+        }
+
+        let discountAmount = discount * subtotal;
+        grandTotal = subtotal - discountAmount
+
+        console.log("Your Grand Total: " + grandTotal);
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Task 18: Bus Reservation System Manage 40 seats and stop booking when full.</p>
+
+    <script>
+
+        let status = "";
+        let totalseats = 40;
+        let bookedseats = 0;
+        let availableseats = 0;
+
+        while (bookedseats < totalseats) {
+
+            status = prompt("Enter Book / stop")
+
+            if (status == "book") {
+                bookedseats += 1;
+                console.log("seat booked");
+
+            }
+
+            else if (status == "stop") {
+                availableseats = totalseats - bookedseats;
+                break;
+            }
+        }
+
+        console.log("Booked Seats: " + bookedseats);
+        console.log("Available Seats: " + availableseats);
+        
+
+    </script>
+</body>
+
+</html>
