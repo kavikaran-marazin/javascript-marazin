@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Task 7: Payroll Processing Process salaries, skip inactive employees, calculate total expense.</p>
+
+    <script>
+        let status = ""
+        let TotalSalary = 0
+
+        for(i=1; i<=10; i++){
+
+            let status = prompt("enter Active / Inactive status");
+
+            if(status==="inactive"){
+                continue;
+            }
+
+            else if(status==="active"){
+                let salary = prompt("Enter Salary");
+                salary = Number(salary)
+                TotalSalary += salary
+            }
+            else{
+                console.log("Error");
+                break;
+                
+            }
+        }
+        console.log(`Total Expenses: Rs.${TotalSalary}`);
+        
+    </script>
+</body>
+</html>

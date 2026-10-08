@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Task 9: File Upload Validation Validate uploaded file sizes and reject files larger than 5MB.</p>
+
+    <script>
+
+        // for(i=1; i<=10; i++){
+        //     let uploadMb = prompt("Enter File " + i + "Size: ")
+        //     uploadMb = Number(uploadMb);
+        //     console.log(uploadMb,"MB");
+            
+        //     if(uploadMb>5){
+        //         console.log("File is too large to upload");
+                
+        //     }
+        //     else{
+        //         console.log("Uploaded successfully");
+                
+        //     }
+        // }
+
+        let fileSize = [24,5,2,9,10,3,4];
+
+        for (const size of fileSize) {
+
+            if(size > 5){
+                console.log("This File "+ size + " is too large");
+                
+            }
+            else{
+                console.log("Your file is successfully uploaded");
+                
+            }
+
+            console.log(size);
+            
+        }
+
+
+        for( i=0; i < fileSize.length; i++ ){
+
+            if(fileSize[i] > 5){
+                  console.log("This File "+ fileSize[i] + " is too large");
+            }
+            else{
+                 console.log("Your file is successfully uploaded");
+            }
+            
+        }
+
+
+    </script>
+</body>
+</html>

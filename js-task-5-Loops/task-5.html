@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Task 5: School Marks Entry Enter marks for 10 students. Calculate total, average, and pass count.</p>
+
+    <script>
+        i = 1;
+        let marks = 0;
+        let avg = 0;
+        let passcount = 0;
+        let failcount = 0;
+        let count = 0
+
+        for (i; i <= 10; i++) {
+
+            marks = prompt("Enter Your Marks");
+            marks = Number(marks);
+
+            if (marks >= 40) {
+                passcount++;
+            }
+            else {
+                failcount++
+            }
+
+
+            count += marks 
+            
+        }
+        avg = count / 10;
+
+        console.log("Average: ", avg);
+        console.log("Total: ", count);
+        console.log("Pass: ", passcount);
+        console.log("Fail: ", failcount);
+
+    </script>
+</body>
+
+</html>

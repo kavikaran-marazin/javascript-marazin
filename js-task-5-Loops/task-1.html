@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let password = "Kavi1808";
+        let attempt = 3;
+
+        password = prompt("Enter Password")
+        while (password !== "Kavi1808" && attempt>0) {
+            attempt -= 1
+
+            if (attempt === 0) {
+                console.log("Your Attempted Reached Limit , Wait 50m");
+
+            }
+            else {
+                console.log("Wrong Password ");
+                console.log("Attempts Left:", attempt);
+
+                password = prompt("Enter Password")
+
+            }
+        }
+        if(password==="Kavi1808"){
+            console.log("You Have Successfully Logged in");
+            
+        }
+
+    </script>
+</body>
+
+</html>

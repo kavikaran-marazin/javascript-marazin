@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Task 11: Monthly Loan EMI Reminder Generate reminders for 12 months.</p>
+
+   <script>
+
+    let loanPaid = ""
+    let loan = 250000;
+    let emi = 250000 / 12;
+
+    let pendingEmi = 0;
+
+    for(i = 1; i <= 12; i++){
+
+        loanPaid = prompt("Enter Paid Or Not")
+
+        if(loanPaid === "paid"){
+
+            loan -= emi + pendingEmi;
+            pendingEmi = 0;
+
+            if(loan <= 0){
+                console.log("You Fully settled your amount");
+                break;  
+            }
+            else{
+                console.log(`Month ${i} EMI Paid`);
+                console.log(`You Have Balance amount to pay: ${loan}`);
+            }
+        }
+
+        else if(loanPaid === "np"){
+            pendingEmi += emi
+            console.log("Your this " + i + " month pending EMI: " + pendingEmi);
+            
+
+        }
+        else{
+            console.log("Error");          
+        }
+    }
+
+</script>
+</body>
+</html>

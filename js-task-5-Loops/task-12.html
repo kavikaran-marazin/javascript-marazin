@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Task 12: Object Property Inspection Display object keys, values, and key-value pairs.</p>
+
+    <script>
+        let student = {
+            name:"Kaviharan",
+            age: 25,
+            Job: "Software Engineer",
+            university: "UOP"
+        }
+
+
+        console.log("Object Keys");
+        
+        for(key in student){
+            console.log(key ) ;
+        }
+       
+         console.log("Object Values");
+        for(key in student){
+            console.log(student[key]);
+        }
+       
+         console.log("Object Keys + values");
+        for(key in student){
+             console.log(`${key} : ${student[key]}`);
+        }
+       
+
+    </script>
+</body>
+</html>

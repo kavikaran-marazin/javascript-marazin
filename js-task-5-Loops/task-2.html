@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let Balance_Amount = 50000;
+        let withdrawl;
+
+        while (Balance_Amount > 0) {
+            withdrawl = prompt("Enter Withdrawl Amount")
+            withdrawl = Number(withdrawl)
+            Balance_Amount -= withdrawl;
+
+            if (withdrawl <= Balance_Amount) {
+
+                Balance_Amount -= withdrawl;
+                console.log("Your Balance: ", Balance_Amount);
+
+                if (Balance_Amount === 0) {
+                    console.log("Your Account Balance is Empty");
+                    
+                }
+
+            }
+            else {
+                console.log("You cannot make withdrawl");
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Task 4: Multiplex Seat Booking Display 50 seats. Mark booked and available seats.</p>
+
+    <script>
+        let i = 1
+        let seats = "";
+        let bookedseats = 0;
+        let availableseats = 0;
+
+        for (i; i <= 10; i++) {
+
+            seats = prompt("Seat: " + i + " Enter b for Booked or n for Available")
+            if (seats === "b") {
+                bookedseats++;
+            }
+            else if (seats === "n") {
+                availableseats++
+            }
+            else{
+                console.log("Retry");
+                seats = prompt("Seat: " + i + " Enter b for Booked or n for Available")
+                
+                
+            }
+
+
+
+        }
+        console.log("Booked Seats: ", bookedseats);
+        console.log("available Seats: ", availableseats);
+    </script>
+</body>
+
+</html>

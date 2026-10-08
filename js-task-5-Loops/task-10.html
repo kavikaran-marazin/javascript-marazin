@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Task 10: Warehouse Stock Audit Display products, identify low stock, calculate total quantity.</p>
+
+    <script>
+
+        let stockLimit = 10;
+        let products = {
+            "Anchor": 5,
+            "Milo": 6,
+            "Viva": 32,
+            "Nestamolt": 10
+        }
+        products["Milk"] = 29;
+
+        let total = 0;
+
+        for (const key in products) {
+
+            if (products[key] < stockLimit) {
+                console.log(key + " " + products[key] + " : Low Stock..");
+            }
+            else {
+                console.log(key + " " + products[key] + " : Stock Available");
+
+            }
+
+
+            total += products[key]
+
+        }
+        console.log("Total Quantity: ", total);
+
+
+    </script>
+</body>
+
+</html>
