@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>3. Find the Largest Number
+Create a function findLargest() that accepts three numbers and returns the largest number</p>
+
+<script>
+    function findLargest(num1,num2,num3){
+        let numbers = [];
+
+        numbers.push(num1)
+        numbers.push(num2)
+        numbers.push(num3)
+
+        let largest = Math.max(...numbers)
+
+        return largest;
+
+    }
+    let answer =  findLargest(12,36,72)
+    console.log(answer);
+    
+
+    //easy-meth
+
+    function findLargest1(num1,num2,num3){
+
+        let largest = Math.max(num1,num2,num3);
+        return largest
+    }
+    let answer1 = findLargest1(12,96,120)
+    console.log(answer1);
+    
+</script>
+</body>
+</html>

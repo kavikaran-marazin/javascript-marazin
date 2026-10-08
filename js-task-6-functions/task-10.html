@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        10. Check Voting Eligibility
+Create a function checkEligibility() that accepts a person's age. If the age is 18 or above, return "Eligible to
+Vote"; otherwise return "Not Eligible"
+    </p>
+
+    <script>
+        function checkEligibility(age){
+            if(age >= 18){
+                return "Eligible to Vote"
+            }
+            else{
+                return "Not Eligible"
+            }
+        }
+        let check = checkEligibility(19)
+        console.log(check);
+        
+    </script>
+</body>
+</html>

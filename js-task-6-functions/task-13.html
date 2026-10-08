@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>13. Check Palindrome
+Create a function checkPalindrome() that accepts a string and checks whether it is a palindrome. Example:
+"madam" fi Palindrome</p>
+
+<script>
+    function checkPalindrome(word){
+        let reverseword = "";
+
+        for(let i = word.length-1; i>=0; i--){
+            reverseword = reverseword + word[i]
+        }
+        if(word === reverseword){
+            console.log("Its Palindrome: " + reverseword);
+
+            
+        }
+        else{
+            console.log("Its Not a Palindrome: " + reverseword);
+
+            
+        }
+    }
+checkPalindrome("madam")
+checkPalindrome("hello")
+
+</script>
+
+</body>
+</html>

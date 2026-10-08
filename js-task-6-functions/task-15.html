@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>15. Shopping Cart Total
+        Create a function calculateTotal() that accepts the prices of 5 products and returns the total price. Then
+        create another function calculateFinalAmount() that applies a discount if the total is greater than Rs.
+        10,000</p>
+
+    <script>
+
+        function calculateTotal(price1, price2, price3, price4, price5) {
+
+            let totalPrice = price1 + price2 + price3 + price4 + price5;
+            return totalPrice;
+        }
+
+        function calculateFinalAmount(totalPrice,discount) {
+
+            if (totalPrice > 10000) {
+                discount = discount / 100
+
+                let discountAmount = totalPrice * discount
+                let finalAmount = totalPrice - discountAmount
+
+                return finalAmount;
+            }
+
+            else {
+                discount = 0
+
+                let discountAmount = totalPrice * discount
+                let finalAmount = totalPrice - discountAmount
+
+                return finalAmount;
+            }
+        }
+
+        
+
+        let total = calculateTotal(2000, 3000, 5000, 1000, 6000);
+        let finalAmount = calculateFinalAmount(total,10);
+
+        console.log(finalAmount);
+
+    </script>
+</body>
+
+</html>

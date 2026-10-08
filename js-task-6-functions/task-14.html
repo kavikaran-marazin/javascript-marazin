@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        14. Calculate Student Grade
+        Create a function calculateGrade() that accepts a student's mark and returns:
+        • 75–100 fi A
+        • 65–74 fi B
+        • 55–64 fi C
+        • 35–54 fi S
+        • Below 35 fi F
+
+    </p>
+
+    <script>
+        function calculateGrade(mark){
+            let text = (mark >=75 && mark <=100) ? "A":(mark>=65 && mark<=74) ? "B" : (mark>=55 && mark<=64) ? "C" : (mark>=35 && mark<=54) ? "S" : "F"
+
+            return text
+        }
+        let status = calculateGrade(0)
+        console.log(status);
+        
+    </script>
+</body>
+
+</html>
