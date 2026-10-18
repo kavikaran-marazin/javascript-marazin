@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function add(a,b){
+
+            c = a+b;
+            return c            
+        }
+       let answer =  add(10,29);
+       console.log(answer);
+
+
+       //named function
+
+       const show = function showOutput(a,b){
+        d = c - a
+        return d
+       }
+      let subtract =  show(5,10);
+      console.log(subtract);
+      
+
+      //Arrow Function
+
+      const multiply = (a,b) => {
+        return a*b
+      }
+      let multiplyAnswer = multiply(2,5);
+      console.log(multiplyAnswer);
+      
+
+
+      //sample question
+
+     const salary = (basicSalary,bonus) => {
+        
+        let bonusAmount = basicSalary * bonus/100;
+        let totalsalary = basicSalary+bonusAmount;
+        return totalsalary;
+
+      }
+
+      const totalsalary = salary(10000,1);
+      console.log(totalsalary);
+      
+       
+    </script>
+</body>
+</html>
