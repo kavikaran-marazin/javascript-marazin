@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #para1 {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!--onclick-->
+    <p id="para1">Lorem ipsum dolor sit amet consectetur.</p>
+    <button onclick="doSomething()">Click</button>
+
+
+    <!--ondblclick-->
+    <p id="para2">Lorem ipsum dolor sit amet.</p>
+    <button ondblclick="showSomething()">Click</button>
+
+
+    <!--onchange-->
+    <select name="cars" id="cars" onchange="changeSomething()">
+        <option value="BMW">BMW</option>
+        <option value="Audi">Audi</option>
+        <option value="Benz">Benz</option>
+    </select>
+
+    <p id="para3"></p>
+
+
+    <input type="text" id="name" oninput="inputSomething()">
+    <p id="para4"></p>
+
+    <script>
+        function doSomething() {
+            let para1 = document.getElementById("para1");
+            para1.textContent = "change";
+            para1.style.color = "red"
+        }
+
+        function showSomething() {
+            let para2 = document.getElementById("para2");
+            para2.textContent = "changed"
+            para2.style.backgroundColor = "black"
+            para2.style.color = "white"
+        }
+
+        function changeSomething() {
+            let cars = document.getElementById("cars").value;
+            let para3 = document.getElementById("para3").textContent = cars
+        }
+
+        function inputSomething(){
+            let name = document.getElementById("name").value;
+            let para4 = document.getElementById("para4").textContent = name
+        }
+    </script>
+</body>
+
+</html>

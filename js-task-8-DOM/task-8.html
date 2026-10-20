@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="para1">Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+    <button onclick="increaseSize()">Click to Increase</button>
+
+
+    <script>
+        function increaseSize(){
+            let para1 = document.getElementById("para1");
+            // para1.style.fontSize = "20px"    // normal just on time only
+
+            //if i want increase it ever time...
+
+            let currentSize = parseFloat(getComputedStyle(para1).fontSize);
+
+            para1.style.fontSize = `${currentSize + 2}px`
+        }
+    </script>
+</body>
+</html>

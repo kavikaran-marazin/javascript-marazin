@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--7. Change the image source when clicking a button-->
+    <div >
+        <img id="myImage" width="400px" src="/assets/DD1.jpg" alt="">
+
+        <button onclick="changeImg()">Click me!</button>
+    </div>
+
+
+    <script>
+
+function changeImg(){
+    let myImage = document.getElementById("myImage");
+
+    if(myImage.getAttribute("src") ==="/assets/DD1.jpg"){
+        myImage.src = "/assets/DD2.jpg"
+    }
+    else{
+        myImage.src = "/assets/DD1.jpg"
+    }
+}
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div-1 {
+            background-color: red;
+            width: 100px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="head-1">Heading-1</h1>
+
+    <div class="div-1"></div>
+    <div class="div-1"></div>
+
+    <button onclick="changeHead()">Click here</button>
+    <button ondblclick="changediv()">Click here</button>
+
+    <script>
+        function changeHead() {
+            const head1 = document.getElementById("head-1").innerHTML = "This is New Heading";
+
+            const div1 = document.getElementsByClassName("div-1"); //its html collection
+            div1[0].style.backgroundColor = "blue"
+
+
+        }
+        function changediv() {
+            const div1 = document.getElementsByClassName("div-1");
+            for (i = 0; i < div1.length; i++) {
+                div1[i].style.backgroundColor = "green"
+            }
+        }
+
+    </script>
+</body>
+
+</html>

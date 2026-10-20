@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        h1{
+            animation: sideview 10s linear infinite;
+        }
+
+        h1:hover{
+            animation-play-state: paused;
+        }
+        @keyframes sideview {
+            from{
+                transform: translateX(-100vw);
+            }
+            to{
+                transform: translateX(100vw);
+            }
+        }
+
+        #para2{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <!--3. Display 'Welcome to JavaScript DOM' inside a paragraph using DOM-->
+    <h1 id="head-1"></h1>
+
+    <!--4. Hide a paragraph when clicking a button.-->
+
+    <p id="para1">Lorem, ipsum dolor.</p>
+    <button onclick="textRemove()">Click here</button>
+
+
+    <!--5. Show a hidden paragraph when clicking a button.-->
+
+    <p id="para2">Hidden Content</p>
+    <button onclick="showHidden()">Show</button>
+
+
+    <!--6. Toggle (Show/Hide) a paragraph using a button.-->
+
+    <p id="para3">Lorem ipsum dolor sit amet.</p>
+    <button id="buttonChange" onclick="hide()">Hide</button>
+
+    <script>
+        const head1 = document.getElementById("head-1").textContent = "Welcome to JavaScript DOM"
+
+        function textRemove(){
+            let para1 = document.getElementById("para1");
+            // para1.textContent = ""; //method-1
+
+            // para1.style.display = "none" //method-2
+
+            // para1.remove();
+        }
+
+        function showHidden(){
+            let para2 = document.getElementById("para2");
+            para2.style.display = "block"
+        }
+
+        function hide(){
+            let para3 = document.getElementById("para3");
+            let buttonChange = document.getElementById("buttonChange");
+
+
+            if(buttonChange.textContent ==="Hide"){
+                para3.style.display = "none"
+                buttonChange.textContent = "Show"
+            }
+            else if(buttonChange.textContent === "Show"){
+                para3.style.display = "block"
+                buttonChange.textContent = "Hide"
+            }
+            
+        }
+    </script>
+</body>
+</html>

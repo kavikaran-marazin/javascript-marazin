@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p id="para1">Hello there</p>
+
+        <p class="para2">HI there</p>
+        <p class="para2">Im kavi</p>
+        <p class="para2">Im praky</p>
+        <p class="para2">Im </p>
+    </div>
+
+    <script>
+        const para1 = document.getElementById("para1").textContent;
+        console.log(para1);
+        
+        const para2 = document.getElementsByClassName("para2");
+        console.log(para2[1].textContent);
+
+        const para = document.getElementsByTagName("p");
+        console.log(para[0].textContent);
+        
+        for(i = 0; i<para.length; i++){
+            console.log(para[i].textContent);
+            
+        }
+    </script>
+</body>
+</html>

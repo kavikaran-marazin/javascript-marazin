@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            padding: 10px 24px;
+            border: none;
+            border-radius: 40px;
+        }
+    </style>
+</head>
+<body>
+    <p id="para1" style="font-size: 24px;">Welcome to Java script</p>
+
+    <button style="background-color: red; color: white;" onclick="changeColor('red')">Red</button>
+    <button style="background-color: blue; color: white;" onclick="changeColor('blue')">Blue</button>
+    <button style="background-color: green; color: white;" onclick="changeColor('green')">Green</button>
+    <button style="background-color: yellow;" onclick="changeColor('yellow')">Yellow</button>
+
+
+    <button id="modeBtn" onclick="changemode()">Darkmode</button>
+
+    <script>
+
+        function changeColor(color){
+            let para1 = document.getElementById("para1");
+
+            para1.style.color = color
+        }
+
+        function changemode(){
+            // let body = document.getElementsByTagName("body");
+            let body = document.body;
+            let para1 = document.getElementById("para1");
+            let modeBtn = document.getElementById("modeBtn");
+
+
+            if(body.style.backgroundColor==="black"){
+                body.style.backgroundColor="white"
+                para1.style.color = "black"
+                modeBtn.textContent = "DarkMode"
+            }
+            else{
+                body.style.backgroundColor = "black"
+                para1.style.color = "white"
+                modeBtn.textContent = "LightMode"
+            }
+        }
+
+    </script>
+</body>
+</html>
