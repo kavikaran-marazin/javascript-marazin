@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f3f5f9;
+            color: #1e293b;
+            min-height: 100vh;
+            padding: 40px 20px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 25px;
+            color: #0f172a;
+        }
+
+        h1:first-child {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            background: #ffffff;
+            padding: 20px 25px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+        }
+
+        #cartCount {
+            background: #2563eb;
+            color: white;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 18px;
+            margin-left: 8px;
+        }
+
+        /* Product cards */
+        body>div {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 18px;
+            box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        body>div:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.09);
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        /* Buttons */
+        button {
+            border: none;
+            border-radius: 8px;
+            padding: 11px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+            margin-right: 8px;
+            margin-bottom: 12px;
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        button:focus-visible {
+            outline: 3px solid #93c5fd;
+            outline-offset: 3px;
+        }
+
+        .add-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .add-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .remove-btn {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .remove-btn:hover {
+            background: #fde68a;
+        }
+
+        .delete-btn {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .delete-btn:hover {
+            background: #fecaca;
+        }
+
+        /* Quantity */
+        p {
+            margin-top: 8px;
+            font-size: 15px;
+            color: #64748b;
+        }
+
+        p span {
+            display: inline-block;
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 6px;
+            margin-left: 5px;
+        }
+
+        /* Total price */
+        #totalPrice {
+            color: #16a34a;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        /* Clear cart button */
+        #clearCart {
+            width: 100%;
+            background: #0f172a;
+            color: white;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        #clearCart:hover {
+            background: #334155;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 14px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            h2 {
+                font-size: 17px;
+                padding: 18px;
+            }
+
+            body>div {
+                padding: 20px 16px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            button {
+                padding: 10px 13px;
+                font-size: 13px;
+                margin-right: 5px;
+            }
+
+            #totalPrice {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>25. Create a shopping cart item counter.</h1>
+
+
+    <h1>Shopping Cart Counter</h1>
+
+    <h2>Cart Items: <span id="cartCount">0</span></h2>
+
+    <div>
+        <h3>Laptop - Rs.250,000</h3>
+        <button class="add-btn" data-product="laptop">Add</button>
+        <button class="remove-btn" data-product="laptop">Remove</button>
+        <button class="delete-btn" data-product="laptop">Delete</button>
+        <p>Quantity: <span id="laptopQty">0</span></p>
+    </div>
+
+    <div>
+        <h3>Headphones - Rs. 8,500</h3>
+        <button class="add-btn" data-product="headphones">Add to Cart</button>
+        <button class="remove-btn" data-product="headphones">Remove</button>
+        <button class="delete-btn" data-product="headphones">Delete</button>
+        <p>Quantity: <span id="headphonesQty">0</span></p>
+    </div>
+
+    <div>
+        <h3>Mouse - Rs. 3,500</h3>
+        <button class="add-btn" data-product="mouse">Add to Cart</button>
+        <button class="remove-btn" data-product="mouse">remove</button>
+        <button class="delete-btn" data-product="mouse">Delete</button>
+        <p>Quantity: <span id="mouseQty">0</span></p>
+    </div>
+
+    <h2>Total Price: Rs. <span id="totalPrice">0</span></h2>
+
+    <button id="clearCart">Clear Cart</button>
+
+
+    <script>
+        let cartCount = document.getElementById("cartCount")
+        let totalPrice = document.getElementById("totalPrice");
+
+        let addBtn = document.querySelectorAll(".add-btn")
+        let removeBtn = document.querySelectorAll(".remove-btn");
+        let deleteBtn = document.querySelectorAll(".delete-btn");
+
+        let clearCart = document.getElementById("clearCart");
+
+        let cart = {
+            laptop: {
+                price: 250000,
+                quantity: 0
+            },
+            headphones: {
+                price: 8500,
+                quantity: 0
+            },
+            mouse: {
+                price: 3500,
+                quantity: 0
+            }
+        };
+
+        function getTotalItems() {
+            let total = 0
+
+            for (let product in cart) {
+                total += cart[product].quantity
+            }
+
+            return total;
+        }
+
+        function updateCart() {
+            let totalItems = 0;
+            let totalAmount = 0;
+
+            for (let product in cart) {
+                let quantity = cart[product].quantity;
+                let price = cart[product].price;
+
+                totalItems += quantity
+                totalAmount += quantity * price
+
+                document.getElementById(product + "Qty").textContent = quantity
+            }
+
+            cartCount.textContent = totalItems;
+            totalPrice.textContent = totalAmount.toLocaleString("en-US");
+        }
+
+        function addToCart(product) {
+            if (product in cart) {
+                cart[product].quantity++;
+                updateCart();
+            }
+        }
+
+        function removeFromCart(product) {
+
+            if (product in cart && cart[product].quantity > 0) {
+                cart[product].quantity--;
+                updateCart();
+            }
+        }
+
+        function deleteProduct(product) {
+            if (product in cart) {
+                cart[product].quantity = 0;
+                updateCart();
+            }
+        }
+        function clearAllItems() {
+
+            for (let product in cart) {
+                cart[product].quantity = 0;
+            }
+
+            updateCart();
+        }
+
+        for (let i = 0; i < addBtn.length; i++) {
+            addBtn[i].addEventListener("click", () => {
+                let product = addBtn[i].dataset.product;
+                addToCart(product);
+            })
+        }
+
+        for (let i = 0; i < removeBtn.length; i++) {
+
+            removeBtn[i].addEventListener("click", () => {
+
+                let product = removeBtn[i].dataset.product;
+                removeFromCart(product)
+
+            })
+        }
+        for (let i = 0; i < deleteBtn.length; i++) {
+
+            deleteBtn[i].addEventListener("click", () => {
+
+                let product = deleteBtn[i].dataset.product;
+
+                deleteProduct(product);
+            });
+        }
+
+        clearCart.addEventListener("click", () => {
+
+            for (let product in cart) {
+                cart[product].quantity = 0;
+            }
+
+            updateCart();
+        });
+
+        updateCart();
+    </script>
+</body>
+
+</html>

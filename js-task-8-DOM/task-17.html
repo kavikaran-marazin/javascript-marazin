@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>17. Count the number of list items.</h1>
+    <input type="text" id="itemInput" placeholder="What you want to add">
+    <button id="addBtn">Add</button>
+    <ul id="listItems"></ul>
+    <p id="result"></p>
+
+
+    <script>
+        const addBtn = document.getElementById("addBtn");
+        const itemInput = document.getElementById("itemInput");
+        const listItems = document.getElementById("listItems");
+        const result = document.getElementById("result")
+
+        addBtn.addEventListener("click", () => {
+
+            let items = itemInput.value.trim();
+
+            if (items === "") {
+                return
+            }
+
+            let newItem = document.createElement("li");
+            let newBtn = document.createElement("button")
+
+            newItem.textContent = items + " "
+            newBtn.textContent = "Delete"
+
+            function updateCount() {
+                let count = listItems.children.length;
+                result.textContent = "Total Items: " + count
+            }
+
+            newItem.appendChild(newBtn);
+            listItems.appendChild(newItem);
+            updateCount();
+
+            newBtn.addEventListener("click", () => {
+                newItem.remove();
+                updateCount();
+            })
+
+            itemInput.value = ""
+
+        })
+    </script>
+</body>
+
+</html>

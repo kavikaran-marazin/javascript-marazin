@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <label for="">Enter Your Number: </label>
+        <input id="num1" type="text" placeholder="Enter Number">
+
+        <label for="">Enter Your Number: </label>
+        <input id="num2" type="text" placeholder="Enter Number">
+
+        <label for="">Result: </label>
+        <p id="result"></p>
+
+
+
+        <button id="add">Add</button>
+        <button id="subtract">Subtract</button>
+        <button id="divide">Divide</button>
+        <button id="multiply">Multiply</button>
+    </div>
+
+
+    <script>
+
+        let add = document.getElementById("add")
+        let subtract = document.getElementById("subtract")
+        let divide = document.getElementById("divide")
+        let multiply = document.getElementById("multiply")
+
+        let num1 = document.getElementById("num1")
+        let num2 = document.getElementById("num2")
+
+        let result = document.getElementById("result")
+
+        add.addEventListener("click", () => {
+
+            if (num1.value.trim() === "" || num2.value.trim() === "") {
+                result.textContent = "Please enter both numbers";
+                return;
+            }
+            let addNumber = Number(num1.value) + Number(num2.value);
+
+            result.textContent = "Answer: " + addNumber
+        })
+
+        subtract.addEventListener("click", () => {
+
+            if (num1.value.trim() === "" || num2.value.trim() === "") {
+                result.textContent = "Please enter both numbers";
+                return;
+            }
+            let subNumber = Number(num1.value) - Number(num2.value);
+
+            result.textContent = "Answer: " + subNumber
+        })
+
+        multiply.addEventListener("click", () => {
+
+            if (num1.value.trim() === "" || num2.value.trim() === "") {
+                result.textContent = "Please enter both numbers";
+                return;
+            }
+
+            let multiNumber = Number(num1.value) * Number(num2.value);
+
+            result.textContent = "Answer: " + multiNumber
+        })
+
+        divide.addEventListener("click", () => {
+
+            if (num1.value.trim() === "" || num2.value.trim() === "") {
+                result.textContent = "Please enter both numbers";
+                return;
+            }
+            let number1 = Number(num1.value);
+            let number2 = Number(num2.value);
+
+            if (number2 === 0) {
+                result.textContent = "Cannot divide by zero";
+            }
+            else {
+                let divNumber = number1 / number2;
+                result.textContent = "Answer: " + divNumber;
+            }
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

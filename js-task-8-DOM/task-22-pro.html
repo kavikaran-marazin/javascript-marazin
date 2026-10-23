@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>22. Create a dynamic table and add rows using a form.</h1>
+
+    <form action="" id="studentForm">
+        <input type="text" name="" id="studentName" placeholder="Enter Name">
+        <input type="number" name="" id="studentAge" placeholder="Enter Age">
+        <input type="text" name="" id="studentCourse" placeholder="Enter Course">
+
+
+        <button type="submit">Add Student</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="studentTable">
+
+        </tbody>
+    </table>
+
+    <script>
+        let studentForm = document.getElementById("studentForm");
+        let studentName = document.getElementById("studentName");
+        let studentAge = document.getElementById("studentAge");
+        let studentCourse = document.getElementById("studentCourse");
+        let studentTable = document.getElementById("studentTable");
+
+
+        function validateStudent(name, age, course) {
+            if (name === "" || studentAge.value.trim() === "") {
+                alert("Please Enter Student name And Age")
+                return
+            }
+            if (age <= 0 || !Number.isInteger(age)) {
+                return;
+            }
+            if (course === "") {
+                alert("Enter Course Name")
+                return;
+            }
+
+            return true;
+        }
+
+        function createStudentRow(name, age, course) {
+
+
+            let tablerRow = document.createElement("tr")
+
+            let nameCol = document.createElement("td")
+            let ageCol = document.createElement("td")
+            let courseCol = document.createElement("td")
+            let actCol = document.createElement("td")
+
+            let deleteBtn = document.createElement("button")
+
+            nameCol.textContent = name;
+            ageCol.textContent = age;
+            courseCol.textContent = course;
+
+            deleteBtn.textContent = "Delete"
+            deleteBtn.type = "button"
+
+            actCol.appendChild(deleteBtn)
+
+            tablerRow.appendChild(nameCol);
+            tablerRow.appendChild(ageCol);
+            tablerRow.appendChild(courseCol);
+            tablerRow.appendChild(actCol)
+
+
+            deleteBtn.addEventListener("click", () => {
+                tablerRow.remove()
+            })
+
+            return tablerRow;
+        }
+
+        function addStudent(name, age, course) {
+            let newRow = createStudentRow(name, age, course);
+
+            studentTable.appendChild(newRow)
+        }
+
+        studentForm.addEventListener("submit", (event) => {
+
+            event.preventDefault();
+
+            let name = studentName.value.trim();
+            let age = Number(studentAge.value);
+            let course = studentCourse.value.trim();
+
+            if (!validateStudent(name, age, course)) {
+                return;
+            }
+
+            addStudent(name,age,course)
+            studentForm.reset();
+        })
+    </script>
+</body>
+
+</html>

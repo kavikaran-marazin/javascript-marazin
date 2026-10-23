@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="finder">
+    <button id="Btn">Result</button>
+    <p id="result"></p>
+
+    <script>
+        let finder = document.getElementById("finder");
+        let Btn = document.getElementById("Btn");
+
+        Btn.addEventListener("click", () => {
+            let number = Number(finder.value)
+            let result = document.getElementById("result")
+
+            if (finder.value.trim() === "" || !Number.isFinite(number)) {
+                result.textContent = "No Value Found, Please Enter a Valid Value";
+            }
+            else if (!Number.isInteger(number)) {
+                result.textContent = "Please Enter a Whole Number";
+            }
+            else if (number % 2 === 0) {
+                result.textContent = `Number You Entered: ${number} and it is Even`
+            }
+            else {
+                result.textContent = `Number You Entered: ${number} and it is Odd`
+            }
+        })
+    </script>
+</body>
+
+</html>

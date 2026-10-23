@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #gallery img {
+            cursor: pointer;
+            border: 3px solid transparent;
+            border-radius: 8px;
+        }
+
+        #gallery img.active{
+            border-color:blue ;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>My Image Gallery</h1>
+
+    <div>
+        <img id="mainImage" src="/assets/DD1.jpg" width="500" alt="Main Image">
+    </div>
+
+    <div id="gallery">
+        <img src="/assets/DD2.jpg" width="100" alt="Image 1">
+        <img src="/assets/pic-2.png" width="100" alt="Image 2">
+        <img src="/assets/DD1.jpg" width="100" alt="Image 2">
+    </div>
+
+    <script>
+        let mainImage = document.getElementById("mainImage");
+
+        let thumbnails = document.querySelectorAll("#gallery img")
+
+        for(let i=0; i<thumbnails.length; i++){
+            thumbnails[i].addEventListener("click",()=>{
+                mainImage.src = thumbnails[i].src
+
+                for(let j = 0; j < thumbnails.length; j++){
+                    thumbnails[j].classList.remove("active");
+                }
+
+                thumbnails[i].classList.add("active")
+            })
+        }
+    </script>
+</body>
+
+</html>

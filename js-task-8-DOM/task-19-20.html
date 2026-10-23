@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+        integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            position: relative;
+            min-height: 100vh;
+            padding: 50px 20px;
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top left, #1e3a5f, transparent 45%),
+                linear-gradient(135deg, #080f1f, #101b32);
+            color: #f8fafc;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 800;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, #38bdf8, #a78bfa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        form {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.8);
+            color: white;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder {
+            color: #64748b;
+        }
+
+        input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.2);
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.35);
+        }
+
+        button[type="submit"]:active {
+            transform: scale(0.98);
+        }
+
+        form>div {
+            margin-top: 25px;
+            width: 100%;
+        }
+
+        form>div>p {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #e2e8f0;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid #334155;
+        }
+
+        th {
+            background: rgba(56, 189, 248, 0.15);
+            color: #7dd3fc;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 16px;
+            text-align: left;
+        }
+
+        td {
+            padding: 15px 16px;
+            font-size: 14px;
+            color: #e2e8f0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        tr {
+            transition: background 0.2s ease;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        td:last-child {
+            font-weight: 700;
+        }
+
+        #changeMode {
+            position: fixed;
+            left: 15px;
+            bottom: 15px;
+            padding: 15px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            color: white;
+            font-size: 26px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.2);
+        }
+
+        #changeMode:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(99, 102, 241, 0.35);
+        }
+
+        #changeMode:active {
+            transform: scale(0.98);
+        }
+
+
+        /* LIGHT MODE */
+
+        body.light-mode {
+            background: #F1F5F9;
+            color: #0F172A;
+        }
+
+        /* Main heading */
+        body.light-mode h1 {
+            background: none;
+            -webkit-text-fill-color: #0F172A;
+            color: #0F172A;
+        }
+
+        /* Form card */
+        body.light-mode form {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08);
+        }
+
+        /* Labels */
+        body.light-mode label {
+            color: #334155;
+        }
+
+        /* Input fields */
+        body.light-mode input {
+            background: #F8FAFC;
+            color: #0F172A;
+            border-color: #CBD5E1;
+        }
+
+        body.light-mode input::placeholder {
+            color: #94A3B8;
+        }
+
+        body.light-mode input:focus {
+            border-color: #2563EB;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Result heading */
+        body.light-mode form>div>p {
+            color: #0F172A;
+        }
+
+        /* Table */
+        body.light-mode table {
+            background: #FFFFFF;
+            border-color: #E2E8F0;
+        }
+
+        body.light-mode th {
+            background: #DBEAFE;
+            color: #1D4ED8;
+        }
+
+        body.light-mode td {
+            color: #334155;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        body.light-mode tr:hover td {
+            background: #F1F5F9;
+        }
+
+        /* Toggle button */
+
+        body.light-mode #changeMode {
+            background: #FFFFFF;
+            color: #2563EB;
+            border-color: #CBD5E1;
+        }
+
+
+        @media (max-width: 600px) {
+            body {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                margin-bottom: 25px;
+            }
+
+            form {
+                padding: 22px 18px;
+                border-radius: 16px;
+            }
+
+            th,
+            td {
+                padding: 12px 10px;
+                font-size: 12px;
+            }
+
+            form>div>p {
+                font-size: 16px;
+            }
+
+            #changeMode {
+                padding: 15px;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>19. Create a simple student mark checker (Pass/Fail)</h1>
+
+
+    <form action="">
+        <label for="">Enter Student Name: </label>
+        <input type="text" name="" id="name">
+
+        <label for="">Enter Students Mark: </label>
+        <input type="number" name="" id="marks" min="0" max="100">
+
+        <button type="submit">Submit</button>
+
+        <div>
+            <p>students Name With Pass/Fail Status</p>
+            <table id="studentTable">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Pass/Fail Status</th>
+                </tr>
+
+            </table>
+        </div>
+
+    </form>
+
+    <button id="changeMode">
+        <i class="fa-solid fa-sun"></i>
+    </button>
+
+    <script>
+        let form = document.querySelector("form");
+
+        let name = document.getElementById("name");
+        let marks = document.getElementById("marks");
+
+        let studentTable = document.getElementById("studentTable");
+
+        form.addEventListener("submit", (event) => {
+
+            event.preventDefault();
+
+            let studentName = name.value.trim();
+            let studentMarks = Number(marks.value);
+
+            if (studentName === "" || marks.value.trim() === "") {
+                alert("Please enter student name and marks");
+                return;
+            }
+            if (!Number.isFinite(studentMarks) || studentMarks < 0 || studentMarks > 100) {
+                alert("Please Enter valid marks between 0 and 100")
+                return;
+            }
+
+            let newRow = document.createElement("tr")
+
+            let nameCol = document.createElement("td")
+            let markCol = document.createElement("td")
+
+            nameCol.textContent = studentName;
+
+            if (studentMarks >= 35) {
+                markCol.textContent = "Pass"
+            }
+            else {
+                markCol.textContent = "Fail"
+            }
+
+            newRow.appendChild(nameCol);
+            newRow.appendChild(markCol);
+
+            studentTable.appendChild(newRow)
+
+            name.value = ""
+            marks.value = ""
+        })
+
+
+        let changeMode = document.getElementById("changeMode");
+        let body = document.body;
+
+        let icon = document.querySelector("#changeMode i")
+
+        changeMode.addEventListener("click", () => {
+
+            body.classList.toggle("light-mode");
+
+            if (body.classList.contains("light-mode")) {
+
+                icon.classList.remove("fa-sun");
+                icon.classList.add("fa-moon");
+
+
+            }
+            else {
+                icon.classList.remove("fa-moon");
+                icon.classList.add("fa-sun");
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

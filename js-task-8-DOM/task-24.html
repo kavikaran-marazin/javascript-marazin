@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Live Search Filtering</h1>
+
+    <input type="text" id="searchInput" placeholder="Search names...">
+
+    <ul id="nameList">
+        <li>Kavikaran</li>
+        <li>Arun</li>
+        <li>Kamal</li>
+        <li>Karthik</li>
+        <li>Nimal</li>
+        <li>Priya</li>
+        <li>Sanjay</li>
+        <li>Vimal</li>
+    </ul>
+
+
+    <script>
+        let searchInput = document.getElementById("searchInput");
+        let names = document.querySelectorAll("#nameList li")
+
+        searchInput.addEventListener("input",()=>{
+            let searchText = searchInput.value.toLowerCase().trim();
+
+            for(let i=0; i < names.length; i++){
+
+                let name = names[i].textContent.toLowerCase();
+
+                if(name.includes(searchText)){
+                    names[i].style.display = "list-item"
+                }
+                else{
+                    names[i].style.display = "none"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

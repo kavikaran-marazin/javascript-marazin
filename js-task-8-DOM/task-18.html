@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .para{
+            font-size: 24px;
+            background: #000;
+            color: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>18. Change all paragraph colors using querySelectorAll()</h1>
+
+
+    <p class="para">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <p class="para">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <p class="para">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <p class="para">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <p class="para">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <p class="para">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+    <button id="colorChange">Change Color</button>
+
+    <script>
+        let para = document.querySelectorAll(".para");
+
+        let myBtn = document.getElementById("colorChange");
+
+        myBtn.addEventListener("click",()=>{
+            for(let i=0; i<para.length; i++){
+                para[i].style.color = "yellow"
+            }
+        })
+    </script>
+</body>
+</html>

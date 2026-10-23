@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="userInput" placeholder="Enter your text">
+
+    <button id="myBtn" >Display</button>
+
+    <h2 id="result"></h2>
+
+
+    <script>
+
+let myBtn = document.getElementById("myBtn");
+let userInput = document.getElementById("userInput")
+
+myBtn.addEventListener("click",()=>{
+    let result = document.getElementById("result")
+    result.textContent = userInput.value
+})
+    </script>
+</body>
+
+</html>

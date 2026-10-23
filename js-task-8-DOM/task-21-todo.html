@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do List</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0B1220, #172554);
+            color: #F8FAFC;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .todo-container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid #334155;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #94A3B8;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .input-section {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        #taskInput {
+            flex: 1;
+            min-width: 0;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid #475569;
+            outline: none;
+            background: #0F172A;
+            color: white;
+            font-size: 14px;
+        }
+
+        #taskInput:focus {
+            border-color: #818CF8;
+        }
+
+        #addTask {
+            padding: 12px 20px;
+            background: #6366F1;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #addTask:hover {
+            background: #4F46E5;
+        }
+
+        #taskList {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        #taskList li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: #0F172A;
+            border: 1px solid #334155;
+            border-radius: 12px;
+        }
+
+        #taskList li span {
+            flex: 1;
+            overflow-wrap: anywhere;
+        }
+
+        #taskList input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #6366F1;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: #94A3B8;
+        }
+
+        .delete-btn {
+            padding: 8px 12px;
+            background: rgba(239, 68, 68, 0.12);
+            color: #F87171;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .delete-btn:hover {
+            background: #DC2626;
+            color: white;
+        }
+
+        .task-footer {
+            margin-top: 25px;
+            padding-top: 18px;
+            border-top: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #taskCount {
+            color: #94A3B8;
+            font-size: 13px;
+        }
+
+        #clearCompleted {
+            background: transparent;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            padding: 9px 12px;
+            color: #CBD5E1;
+            cursor: pointer;
+        }
+
+        #clearCompleted:hover {
+            background: #334155;
+        }
+
+        @media (max-width: 480px) {
+            .todo-container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            #addTask {
+                padding: 12px;
+            }
+
+            .task-footer {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="todo-container">
+
+        <h1>My To-Do List</h1>
+        <p class="subtitle">Stay focused. Get things done.</p>
+
+        <div class="input-section">
+            <input type="text" id="taskInput" placeholder="What do you need to do?">
+
+            <button type="button" id="addTask">+ Add</button>
+        </div>
+
+        <ul id="taskList">
+        </ul>
+
+        <div class="task-footer">
+            <p id="taskCount">0 of 0 tasks completed</p>
+
+            <button type="button" id="clearCompleted">
+                Clear Completed
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        let addTask = document.getElementById("addTask");
+        let taskInput = document.getElementById("taskInput");
+        let taskList = document.getElementById("taskList");
+        let taskCount = document.getElementById("taskCount");
+        let clearCompleted = document.getElementById("clearCompleted");
+
+
+        function updateCount() {
+            let completedTasks = taskList.querySelectorAll('input[type="checkbox"]:checked').length;
+            let totalTasks = taskList.children.length;
+            taskCount.textContent = `${completedTasks} of ${totalTasks} tasks completed`
+        }
+
+        function saveTasks() {
+            let tasks = [];
+
+            let allTasks = taskList.querySelectorAll("li")
+
+            for (let i = 0; i < allTasks.length; i++) {
+
+                let taskText = allTasks[i].querySelector("span").textContent;
+                let completed = allTasks[i].querySelector("input").checked;
+
+                tasks.push({
+                    text: taskText,
+                    completed: completed
+                });
+            }
+            localStorage.setItem("task", JSON.stringify(tasks));
+        }
+
+        function loadTasks() {
+            let saveTasks = JSON.parse(localStorage.getItem("task")) || [];
+
+            for (let i = 0; i < saveTasks.length; i++) {
+                taskInput.value = (saveTasks[i].text);
+                addTask.click();
+
+            }
+        }
+
+        addTask.addEventListener("click", () => {
+            let task = taskInput.value.trim();
+
+            if (task === "") {
+                return;
+            }
+
+            let newList = document.createElement("li");
+            let newBtn = document.createElement("button");
+            let checkbox = document.createElement("input");
+            let taskText = document.createElement("span")
+
+            checkbox.type = "checkbox"
+
+            newBtn.textContent = "Delete";
+            newBtn.classList.add("delete-btn")
+
+
+            taskText.textContent = task;
+
+
+
+            newList.appendChild(checkbox)
+            newList.appendChild(taskText)
+            newList.appendChild(newBtn);
+            taskList.appendChild(newList)
+
+            updateCount();
+            saveTasks();
+
+
+            checkbox.addEventListener("change", () => {
+                taskText.classList.toggle("completed", checkbox.checked)
+                updateCount();
+                saveTasks()
+            })
+
+            newBtn.addEventListener("click", () => {
+                newList.remove()
+                updateCount();
+                saveTasks();
+            })
+            taskInput.value = ""
+        })
+
+        taskInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                addTask.click();
+            }
+        })
+
+
+
+        clearCompleted.addEventListener("click", () => {
+            let completedTasks = taskList.querySelectorAll('input[type="checkbox"]:checked');
+
+            for (let i = 0; i < completedTasks.length; i++) {
+                completedTasks[i].parentElement.remove()
+            }
+            updateCount();
+            saveTasks();
+        })
+        loadTasks()
+        
+    </script>
+
+</body>
+
+</html>

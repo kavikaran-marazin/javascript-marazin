@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <input type="text" id="itemInput" placeholder="Enter item">
+    <button id="addItems">Add</button>
+    <button id="removeItems">Remove</button>
+
+    <ul id="list"></ul>
+
+
+    <script>
+        let addItems = document.getElementById("addItems");
+        let removeItems = document.getElementById("removeItems");
+
+        let itemInput = document.getElementById("itemInput");
+        let list = document.getElementById("list");
+
+        addItems.addEventListener("click", () => {
+
+
+            let items = itemInput.value.trim();
+
+            if (items === "") {
+                return;
+            }
+            // list.innerHTML += "<li>" + items + "</li>"
+
+            let newItem = document.createElement("li")
+            let newBtn = document.createElement("button")
+
+            newItem.textContent = items + " ";
+            newBtn.textContent = "Delete"
+
+            newItem.appendChild(newBtn)
+
+            list.appendChild(newItem);
+
+            newBtn.addEventListener("click",()=>{
+                newItem.remove();
+            })
+
+            itemInput.value = "";
+
+        })
+
+        removeItems.addEventListener("click", () => {
+            if (list.lastElementChild) {
+                list.removeChild(list.lastElementChild)
+            }
+        })
+    </script>
+</body>
+
+</html>
