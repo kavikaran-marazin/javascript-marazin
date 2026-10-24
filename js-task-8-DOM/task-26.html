@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Quiz Application</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: radial-gradient(circle at top left, #1e3a8a, transparent 45%),
+                linear-gradient(135deg, #080f20, #111d35);
+            color: #f8fafc;
+        }
+
+        .quiz-container {
+            width: 100%;
+            max-width: 650px;
+            padding: 38px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            background: rgba(20, 33, 58, 0.88);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        #questionNumber {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 8px 14px;
+            border-radius: 30px;
+            background: rgba(59, 130, 246, 0.15);
+            color: #93c5fd;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        #questionText {
+            margin-bottom: 28px;
+            font-size: 23px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        #optionsContainer {
+            display: grid;
+            gap: 13px;
+            margin-bottom: 30px;
+        }
+
+        #optionsContainer button {
+            width: 100%;
+            padding: 17px 20px;
+            border: 1px solid #344461;
+            border-radius: 12px;
+            background: #1c2b45;
+            color: #e2e8f0;
+            text-align: left;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s,
+                transform 0.2s;
+        }
+
+        #optionsContainer button:hover {
+            border-color: #60a5fa;
+            background: #263c60;
+            transform: translateY(-2px);
+        }
+
+        #optionsContainer button.selected {
+            background: #166534;
+            border-color: #4ade80;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        #optionsContainer button.selected:hover {
+            background: #166534;
+        }
+
+        #nextBtn,
+        #restartBtn {
+            width: 100%;
+            padding: 16px 22px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        #nextBtn:hover:not(:disabled),
+        #restartBtn:hover {
+            transform: translateY(-2px);
+        }
+
+        #nextBtn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        #resultBox {
+            text-align: center;
+            padding: 30px 0 10px;
+        }
+
+        #resultBox h2 {
+            margin-bottom: 22px;
+            font-size: 28px;
+        }
+
+        #resultBox p {
+            margin-bottom: 30px;
+            font-size: 19px;
+            color: #cbd5e1;
+        }
+
+        #finalScore {
+            color: #60a5fa;
+            font-size: 34px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px;
+            }
+
+            .quiz-container {
+                padding: 24px 18px;
+                border-radius: 18px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            #questionText {
+                font-size: 19px;
+            }
+
+            #optionsContainer button {
+                padding: 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quiz-container">
+
+        <h1>JavaScript Quiz</h1>
+
+        <!-- Quiz Section -->
+        <div id="quizBox">
+
+            <p id="questionNumber">Question 0 of 10</p>
+
+            <h2 id="questionText">Question will appear here</h2>
+
+            <!-- Answer Options -->
+            <div id="optionsContainer"></div>
+
+            <!-- Next Button -->
+            <button id="nextBtn" disabled>Next Question</button>
+
+        </div>
+
+        <!-- Result Section -->
+        <div id="resultBox" style="display: none;">
+
+            <h2>Quiz Completed!</h2>
+
+            <p>Your Score: <span id="finalScore">0</span></p>
+
+            <button id="restartBtn">Restart Quiz</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        let quizBox = document.getElementById("quizBox");
+        let questionNumber = document.getElementById("questionNumber");
+        let questionText = document.getElementById("questionText");
+        let optionsContainer = document.getElementById("optionsContainer")
+
+        let nextBtn = document.getElementById("nextBtn");
+
+        //result
+        let resultBox = document.getElementById("resultBox");
+        let finalScore = document.getElementById("finalScore")
+        let restartBtn = document.getElementById("restartBtn")
+
+
+
+        let questions = [
+            {
+                question: "Which keyword is used to declare a variable?",
+                options: ["var", "let", "const", "All of the above"],
+                answer: "All of the above"
+            },
+            {
+                question: "Which method selects an element by ID?",
+                options: ["querySelectorAll()", "getElementById()", "getElementsByClassName()", "getElement()"],
+                answer: "getElementById()"
+            },
+            {
+                question: "Which operator checks both value and type?",
+                options: ["==", "=", "===", "!="],
+                answer: "==="
+            },
+            {
+                question: "Which method adds an item to the end of an array?",
+                options: ["push()", "pop()", "shift()", "slice()"],
+                answer: "push()"
+            },
+            {
+                question: "Which event occurs when a button is clicked?",
+                options: ["input", "change", "click", "submit"],
+                answer: "click"
+            },
+            {
+                question: "Which property changes the text inside an element?",
+                options: ["style", "textContent", "value", "src"],
+                answer: "textContent"
+            },
+            {
+                question: "What is the index of the first array element?",
+                options: ["1", "-1", "0", "2"],
+                answer: "0"
+            },
+            {
+                question: "Which method searches an array for the first matching element?",
+                options: ["filter()", "map()", "find()", "push()"],
+                answer: "find()"
+            },
+            {
+                question: "Which property gives the number of elements in an array?",
+                options: ["size", "count", "total", "length"],
+                answer: "length"
+            },
+            {
+                question: "Which method attaches an event handler to an element?",
+                options: ["addEventListener()", "appendChild()", "createElement()", "setAttribute()"],
+                answer: "addEventListener()"
+            }
+        ];
+
+        let currentQuestion = 0;
+
+        function showQuestion() {
+            let question = questions[currentQuestion]
+            console.log(question);
+
+            questionText.textContent = question.question
+            questionNumber.textContent = `Question ${currentQuestion + 1} of 10`
+
+
+            optionsContainer.innerHTML = ""
+
+            for (let option of question.options) {
+                let answerBtn = document.createElement("button")
+                answerBtn.textContent = option;
+
+                answerBtn.addEventListener("click", () => {
+                    selectAnswer(option, answerBtn);
+                })
+
+                optionsContainer.appendChild(answerBtn)
+            }
+
+            if (currentQuestion === questions.length - 1) {
+                nextBtn.textContent = "Finish Attempt"
+            }
+            else {
+                nextBtn.textContent = "Next Question"
+            }
+
+        }
+
+        let selectedAnswer = null;
+
+        function selectAnswer(answer, answerBtn) {
+            selectedAnswer = answer
+            nextBtn.disabled = false
+
+            let buttons = optionsContainer.querySelectorAll("button")
+
+            for (let button of buttons) {
+                button.classList.remove("selected")
+            }
+
+            answerBtn.classList.add("selected")
+        }
+
+        function nextQuestion() {
+
+            checkAnswer();
+
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                selectedAnswer = null;
+                nextBtn.disabled = true
+                showQuestion();
+            }
+            else {
+                showResult();
+            }
+
+        }
+
+        let score = 0
+
+        function checkAnswer() {
+
+            if (selectedAnswer === questions[currentQuestion].answer) {
+                score++;
+            }
+        }
+
+        function showResult() {
+
+            finalScore.textContent = score
+
+            quizBox.style.display = "none"
+
+            resultBox.style.display = "block"
+        }
+        function restart() {
+
+            quizBox.style.display = "block"
+            resultBox.style.display = "none"
+
+            currentQuestion = 0
+            score = 0;
+            selectedAnswer = null;
+
+            nextBtn.disabled = true;
+            showQuestion();
+        }
+
+        nextBtn.addEventListener("click", () => {
+            nextQuestion();
+        })
+
+        restartBtn.addEventListener("click", () => {
+            restart();
+        })
+        showQuestion();
+    </script>
+
+</body>
+
+</html>

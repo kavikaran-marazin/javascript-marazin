@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Countdown Timer</title>
+</head>
+
+<body>
+
+    <h1>Countdown Timer</h1>
+
+    <h2 id="timer">10</h2>
+
+    <button id="startBtn">Start</button>
+
+    <script>
+        let startBtn = document.getElementById("startBtn")
+        let timer = document.getElementById("timer")
+
+        let count = 10
+
+        function startCountdown() {
+            let interval = setInterval(() => {
+
+                count--;
+
+                timer.textContent = count;
+
+                if(count === 0){
+                    clearInterval(interval)
+                }
+            }, 1000);
+        }
+        startBtn.addEventListener("click",startCountdown)
+
+    </script>
+
+</body>
+
+</html>

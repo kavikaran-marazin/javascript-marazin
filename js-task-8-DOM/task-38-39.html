@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mouse Over</title>
+</head>
+<body>
+
+    <div id="box">Move Mouse Here</div>
+
+    <p id="display">Press any key</p>
+
+    <script>
+        let box = document.getElementById("box")
+
+        box.addEventListener("mouseover",()=>{
+            box.style.backgroundColor = "green"
+        })
+
+        box.addEventListener("mouseout",()=>{
+            box.style.backgroundColor = "white"
+        })
+
+        let display = document.getElementById("display")
+
+        document.addEventListener("keydown",(event)=>{
+            display.textContent = event.key
+        })
+
+    </script>
+
+</body>
+</html>

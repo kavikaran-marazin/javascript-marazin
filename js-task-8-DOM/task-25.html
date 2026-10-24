@@ -348,14 +348,7 @@
             });
         }
 
-        clearCart.addEventListener("click", () => {
-
-            for (let product in cart) {
-                cart[product].quantity = 0;
-            }
-
-            updateCart();
-        });
+        clearCart.addEventListener("click", clearAllItems)
 
         updateCart();
     </script>

@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+    <style>
+        .answer{
+            display: none;
+        }
+        .answer.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="accordion">
+        <button class="question">What is JavaScript?</button>
+        <p class="answer">JavaScript makes websites interactive.</p>
+    </div>
+
+    <div class="accordion">
+        <button class="question">What is HTML?</button>
+        <p class="answer">HTML creates the structure of a webpage.</p>
+    </div>
+
+    <div class="accordion">
+        <button class="question">What is CSS?</button>
+        <p class="answer">CSS is used to style webpages.</p>
+    </div>
+
+    <script>
+        let questions = document.querySelectorAll(".question");
+
+        for(let question of questions){
+            question.addEventListener("click",()=>{
+
+                let answer = question.nextElementSibling;
+                answer.classList.toggle("active")
+            })
+        }
+    </script>
+
+</body>
+</html>

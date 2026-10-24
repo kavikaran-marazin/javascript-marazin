@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Navigation</title>
+
+    <style>
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-btn.active {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Tab Navigation System</h1>
+
+    <div class="tabs">
+        <button class="tab-btn" data-tab="home">Home</button>
+        <button class="tab-btn" data-tab="about">About</button>
+        <button class="tab-btn" data-tab="services">Services</button>
+    </div>
+
+    <div id="home" class="tab-content">
+        <h2>Welcome to Home</h2>
+        <p>This is the Home tab content.</p>
+    </div>
+
+    <div id="about" class="tab-content">
+        <h2>About Us</h2>
+        <p>This is the About tab content.</p>
+    </div>
+
+    <div id="services" class="tab-content">
+        <h2>Our Services</h2>
+        <p>This is the Services tab content.</p>
+    </div>
+
+    <script>
+        let tabBtn = document.querySelectorAll(".tab-btn")
+        let tabContent = document.querySelectorAll(".tab-content")
+
+        for (let buttons of tabBtn) {
+
+            buttons.addEventListener("click", () => {
+
+                for (let btn of tabBtn) {
+                    btn.classList.remove("active")
+                }
+                buttons.classList.add("active")
+
+
+                for(let tabs of tabContent){
+                    tabs.classList.remove("active")
+                }
+                
+                let tabName = buttons.dataset.tab;
+                let content = document.getElementById(tabName);
+
+                content.classList.add("active")
+            })
+        }
+       
+    </script>
+
+</body>
+
+</html>
